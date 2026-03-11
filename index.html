@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo VyV | Inmobiliaria y Constructora</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- ESTILOS CSS --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            scroll-behavior: smooth;
+            background-color: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header y Navegación */
+        header {
+            background: #fff;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .logo .brand {
+            font-size: 28px;
+            font-weight: bold;
+            color: #002e5b; /* Azul VyV */
+            letter-spacing: -1px;
+        }
+
+        .logo small {
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: #b39453; /* Dorado VyV */
+            font-weight: 700;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #002e5b;
+            font-weight: 600;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #b39453;
+        }
+
+        .btn-contacto {
+            background: #b39453;
+            color: #fff !important;
+            padding: 10px 22px;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+
+        .btn-contacto:hover {
+            background: #002e5b;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 75vh;
+            background: linear-gradient(rgba(0,46,91,0.5), rgba(0,46,91,0.5)), 
+                        url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+        }
+
+        .hero-content h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            margin-bottom: 35px;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            text-decoration: none;
+            background: #b39453;
+            color: #fff;
+            padding: 16px 45px;
+            font-weight: bold;
+            border-radius: 2px;
+            transition: 0.4s;
+            text-transform: uppercase;
+            font-size: 13px;
+        }
+
+        .cta-button:hover {
+            background: #fff;
+            color: #002e5b;
+        }
+
+        /* Sección Proyectos */
+        .section-title {
+            text-align: center;
+            margin: 60px 0 40px;
+            color: #002e5b;
+            font-size: 28px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 50px;
+            height: 3px;
+            background: #b39453;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 80px;
+        }
+
+        .project-card {
+            background: #fff;
+            border: 1px solid #eee;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .project-img {
+            height: 240px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .project-info {
+            padding: 25px;
+        }
+
+        .project-info h3 {
+            color: #002e5b;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .project-info p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .project-link {
+            color: #b39453;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        /* Ajustes Mobile */
+        @media (max-width: 768px) {
+            nav { display: none; }
+            .hero-content h1 { font-size: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <span class="brand">GRUPO VyV</span>
+                <small>CONSTRUYENDO HISTORIAS</small>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">INICIO</a></li>
+                    <li><a href="#proyectos">PROYECTOS</a></li>
+                    <li><a href="#nosotros">NOSOTROS</a></li>
+                    <li><a href="#contacto" class="btn-contacto">CONTÁCTANOS</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>Exclusividad en cada detalle</h1>
+            <p>Descubre nuestros proyectos en Miraflores, San Isidro y Surco.</p>
+            <a href="#proyectos" class="cta-button">Explorar Proyectos</a>
+        </div>
+    </section>
+
+    <section id="proyectos" class="container">
+        <h2 class="section-title">Proyectos Destacados</h2>
+        <div class="projects-grid">
+            
+            <div class="project-card">
+                <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1545324418-f1d3ac1ef300?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="project-info">
+                    <h3>Edificio El Parque</h3>
+                    <p>Ubicado en el corazón de San Isidro con acabados de primera.</p>
+                    <a href="#" class="project-link">Más información →</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="project-info">
+                    <h3>Miraflores Views</h3>
+                    <p>Departamentos con vista al mar y amplias terrazas.</p>
+                    <a href="#" class="project-link">Más información →</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="project-info">
+                    <h3>Centro Empresarial VyV</h3>
+                    <p>Oficinas premium en la zona financiera de Lima.</p>
+                    <a href="#" class="project-link">Más información →</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script defer src="https://ucdemo.3cx.lat/chatvyv/call-us.js"></script>
+
+</body>
+</html>
