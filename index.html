@@ -93,7 +93,7 @@
 
         /* Hero Section */
         .hero {
-            height: 75vh;
+            height: 70vh;
             background: linear-gradient(rgba(0,46,91,0.5), rgba(0,46,91,0.5)), 
                         url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80');
             background-size: cover;
@@ -109,17 +109,6 @@
             font-size: 42px;
             margin-bottom: 20px;
             text-transform: uppercase;
-        }
-
-        .cta-button {
-            text-decoration: none;
-            background: #b39453;
-            color: #fff;
-            padding: 16px 45px;
-            font-weight: bold;
-            border-radius: 2px;
-            text-transform: uppercase;
-            font-size: 13px;
         }
 
         /* Sección Proyectos */
@@ -140,6 +129,11 @@
             background: #fff;
             border: 1px solid #eee;
             padding-bottom: 20px;
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .project-img {
@@ -148,8 +142,62 @@
             background-position: center;
         }
 
+        /* --- ESTILOS DEL CHAT --- */
+        #wrapper-chat-vyv {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            font-family: sans-serif;
+        }
+
+        #bubble-chat {
+            width: 60px;
+            height: 60px;
+            background-color: #002e5b;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        #bubble-chat:hover {
+            transform: scale(1.1);
+        }
+
+        #window-chat {
+            display: none;
+            position: absolute;
+            bottom: 75px;
+            right: 0;
+            width: 380px;
+            height: 550px;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+            border: 1px solid #ddd;
+        }
+
+        .chat-header {
+            background: #002e5b;
+            color: white;
+            padding: 12px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
         @media (max-width: 768px) {
             nav { display: none; }
+            #window-chat {
+                width: 90vw;
+                height: 70vh;
+                right: -10px;
+            }
         }
     </style>
 </head>
@@ -165,7 +213,7 @@
                 <ul>
                     <li><a href="#inicio">INICIO</a></li>
                     <li><a href="#proyectos">PROYECTOS</a></li>
-                    <li><a href="#contacto" class="btn-contacto">CONTÁCTANOS</a></li>
+                    <li><a href="#" class="btn-contacto">CONTÁCTANOS</a></li>
                 </ul>
             </nav>
         </div>
@@ -174,13 +222,13 @@
     <section id="inicio" class="hero">
         <div class="hero-content">
             <h1>Exclusividad en cada detalle</h1>
-            <p>Descubre nuestros proyectos en las mejores zonas de Lima.</p><br>
-            <a href="#proyectos" class="cta-button">Explorar Proyectos</a>
+            <p>Proyectos inmobiliarios en las mejores zonas de Lima.</p><br>
+            <a href="#proyectos" style="text-decoration:none; background:#b39453; color:white; padding:15px 30px; font-weight:bold;">VER PROYECTOS</a>
         </div>
     </section>
 
     <section id="proyectos" class="container">
-        <h2 class="section-title">Proyectos Destacados</h2>
+        <h2 class="section-title">Nuestros Proyectos</h2>
         <div class="projects-grid">
             <div class="project-card">
                 <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1545324418-f1d3ac1ef300?auto=format&fit=crop&w=600&q=80');"></div>
@@ -193,14 +241,38 @@
                 <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80');"></div>
                 <div style="padding:20px;">
                     <h3>Miraflores Views</h3>
-                    <p>Vista al mar y lujo total.</p>
+                    <p>Frente a parque - Preventa</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <call-us-selector phonesystem-url="https://ucdemo.3cx.lat" party="LiveChat749341"></call-us-selector>
-    <script defer src="https://downloads-global.3cx.com/downloads/livechatandtalk/v1/callus.js" id="tcx-callus-js" charset="utf-8"></script>
+    <div id="wrapper-chat-vyv">
+        <div id="bubble-chat" onclick="toggleChat()">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+        </div>
+
+        <div id="window-chat">
+            <div class="chat-header">
+                <span style="font-weight: bold; font-size: 14px;">Asesor Digital VyV</span>
+                <span onclick="toggleChat()" style="cursor: pointer; font-size: 24px; line-height: 0;">&times;</span>
+            </div>
+            <iframe src="https://ucdemo.3cx.lat/chatvyv" width="100%" height="495" style="border: none;"></iframe>
+        </div>
+    </div>
+
+    <script>
+        function toggleChat() {
+            var chat = document.getElementById('window-chat');
+            if (chat.style.display === 'none' || chat.style.display === '') {
+                chat.style.display = 'block';
+            } else {
+                chat.style.display = 'none';
+            }
+        }
+    </script>
 
 </body>
 </html>
