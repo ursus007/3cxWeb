@@ -7,198 +7,51 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     
     <style>
-        /* --- ESTILOS CSS VyV --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* --- ESTILOS VyV --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; line-height: 1.6; color: #333; background-color: #fff; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            scroll-behavior: smooth;
-            background-color: #fff;
-        }
+        header { background: #fff; padding: 15px 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo .brand { font-size: 28px; font-weight: bold; color: #002e5b; letter-spacing: -1px; }
+        .logo small { font-size: 10px; letter-spacing: 2px; color: #b39453; font-weight: 700; display: block; }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header y Navegación */
-        header {
-            background: #fff;
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            flex-direction: column;
-            line-height: 1;
-        }
-
-        .logo .brand {
-            font-size: 28px;
-            font-weight: bold;
-            color: #002e5b; /* Azul VyV */
-            letter-spacing: -1px;
-        }
-
-        .logo small {
-            font-size: 10px;
-            letter-spacing: 2px;
-            color: #b39453; /* Dorado VyV */
-            font-weight: 700;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-            align-items: center;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #002e5b;
-            font-weight: 600;
-            font-size: 14px;
-            transition: 0.3s;
-        }
-
-        nav a:hover {
-            color: #b39453;
-        }
-
-        .btn-contacto {
-            background: #b39453;
-            color: #fff !important;
-            padding: 10px 22px;
-            border-radius: 4px;
-            transition: 0.3s;
-        }
-
-        /* Hero Section */
         .hero {
             height: 70vh;
             background: linear-gradient(rgba(0,46,91,0.5), rgba(0,46,91,0.5)), 
                         url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: #fff;
+            background-size: cover; background-position: center;
+            display: flex; justify-content: center; align-items: center; text-align: center; color: #fff;
         }
 
-        .hero-content h1 {
-            font-size: 42px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
+        .section-title { text-align: center; margin: 60px 0 40px; color: #002e5b; }
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; margin-bottom: 80px; }
+        .project-card { border: 1px solid #eee; padding-bottom: 20px; }
+        .project-img { height: 240px; background-size: cover; background-position: center; }
 
-        /* Sección Proyectos */
-        .section-title {
-            text-align: center;
-            margin: 60px 0 40px;
-            color: #002e5b;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-            margin-bottom: 80px;
-        }
-
-        .project-card {
-            background: #fff;
-            border: 1px solid #eee;
-            padding-bottom: 20px;
-            transition: 0.3s;
-        }
-
-        .project-card:hover {
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .project-img {
-            height: 240px;
-            background-size: cover;
-            background-position: center;
-        }
-
-        /* --- ESTILOS DEL CHAT --- */
-        #wrapper-chat-vyv {
+        /* --- BURBUJA DE CHAT (POPUP VERSION) --- */
+        #chat-button-vyv {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 9999;
-            font-family: sans-serif;
-        }
-
-        #bubble-chat {
-            width: 60px;
-            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            width: 65px;
+            height: 65px;
             background-color: #002e5b;
             border-radius: 50%;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
             cursor: pointer;
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: transform 0.3s ease;
+            z-index: 9999;
+            transition: all 0.3s ease;
+            border: 2px solid #b39453;
         }
 
-        #bubble-chat:hover {
-            transform: scale(1.1);
-        }
+        #chat-button-vyv:hover { transform: scale(1.1); background-color: #b39453; }
 
-        #window-chat {
-            display: none;
-            position: absolute;
-            bottom: 75px;
-            right: 0;
-            width: 380px;
-            height: 550px;
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-            border: 1px solid #ddd;
-        }
-
-        .chat-header {
-            background: #002e5b;
-            color: white;
-            padding: 12px 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        @media (max-width: 768px) {
-            nav { display: none; }
-            #window-chat {
-                width: 90vw;
-                height: 70vh;
-                right: -10px;
-            }
-        }
+        #chat-button-vyv svg { width: 32px; height: 32px; fill: white; }
     </style>
 </head>
 <body>
@@ -209,68 +62,48 @@
                 <span class="brand">GRUPO VyV</span>
                 <small>CONSTRUYENDO HISTORIAS</small>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="#inicio">INICIO</a></li>
-                    <li><a href="#proyectos">PROYECTOS</a></li>
-                    <li><a href="#" class="btn-contacto">CONTÁCTANOS</a></li>
-                </ul>
-            </nav>
         </div>
     </header>
 
-    <section id="inicio" class="hero">
+    <section class="hero">
         <div class="hero-content">
             <h1>Exclusividad en cada detalle</h1>
-            <p>Proyectos inmobiliarios en las mejores zonas de Lima.</p><br>
-            <a href="#proyectos" style="text-decoration:none; background:#b39453; color:white; padding:15px 30px; font-weight:bold;">VER PROYECTOS</a>
+            <p>Atención personalizada vía chat para tus próximos proyectos.</p>
         </div>
     </section>
 
-    <section id="proyectos" class="container">
+    <section class="container">
         <h2 class="section-title">Nuestros Proyectos</h2>
         <div class="projects-grid">
             <div class="project-card">
                 <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1545324418-f1d3ac1ef300?auto=format&fit=crop&w=600&q=80');"></div>
-                <div style="padding:20px;">
-                    <h3>Edificio El Parque</h3>
-                    <p>San Isidro - Entrega Inmediata</p>
-                </div>
+                <div style="padding:20px;"><h3>Edificio El Parque</h3><p>San Isidro</p></div>
             </div>
             <div class="project-card">
                 <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80');"></div>
-                <div style="padding:20px;">
-                    <h3>Miraflores Views</h3>
-                    <p>Frente a parque - Preventa</p>
-                </div>
+                <div style="padding:20px;"><h3>Miraflores Views</h3><p>Miraflores</p></div>
             </div>
         </div>
     </section>
 
-    <div id="wrapper-chat-vyv">
-        <div id="bubble-chat" onclick="toggleChat()">
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-            </svg>
-        </div>
-
-        <div id="window-chat">
-            <div class="chat-header">
-                <span style="font-weight: bold; font-size: 14px;">Asesor Digital VyV</span>
-                <span onclick="toggleChat()" style="cursor: pointer; font-size: 24px; line-height: 0;">&times;</span>
-            </div>
-            <iframe src="https://ucdemo.3cx.lat/chatvyv" width="100%" height="495" style="border: none;"></iframe>
-        </div>
+    <div id="chat-button-vyv" onclick="openVyVChat()">
+        <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
     </div>
 
     <script>
-        function toggleChat() {
-            var chat = document.getElementById('window-chat');
-            if (chat.style.display === 'none' || chat.style.display === '') {
-                chat.style.display = 'block';
-            } else {
-                chat.style.display = 'none';
-            }
+        function openVyVChat() {
+            // Configuramos las dimensiones de la ventana pequeña
+            var width = 400;
+            var height = 600;
+            var left = (window.innerWidth / 2) - (width / 2) + window.screenX;
+            var top = (window.innerHeight / 2) - (height / 2) + window.screenY;
+
+            // Abrimos la URL de tu cola en una ventana nueva controlada
+            window.open(
+                'https://ucdemo.3cx.lat/chatvyv', 
+                'ChatVyV', 
+                'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=' + width + ', height=' + height + ', top=' + top + ', left=' + left
+            );
         }
     </script>
 
