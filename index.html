@@ -3,11 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grupo VyV | Inmobiliaria y Constructora</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Grupo V&V | Especialistas en Recuperación de Carteras</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
     <style>
-        /* --- ESTILOS GENERALES VyV --- */
+        :root {
+            --azul-corporativo: #002e5b;
+            --rojo-vv: #b41f24;
+            --gris-suave: #f8f9fa;
+            --texto-oscuro: #1a1a1a;
+            --blanco: #ffffff;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -15,164 +22,223 @@
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f4f4f4;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--blanco);
+            color: var(--texto-oscuro);
+            overflow-x: hidden;
         }
 
-        /* Header Corporativo */
+        /* Navegación Elegante */
         header {
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.95);
             padding: 20px 0;
-            text-align: center;
-            border-bottom: 3px solid #b39453; /* Dorado VyV */
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #eee;
+            backdrop-filter: blur(10px);
         }
 
-        .brand {
-            font-size: 32px;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
             font-weight: 700;
-            color: #002e5b; /* Azul VyV */
-            letter-spacing: -1px;
-            text-transform: uppercase;
-        }
-
-        .gold-text {
-            font-size: 12px;
-            letter-spacing: 3px;
-            color: #b39453;
-            font-weight: 700;
-            display: block;
-            margin-top: 5px;
-            text-transform: uppercase;
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 65vh;
-            background: linear-gradient(rgba(0,46,91,0.6), rgba(0,46,91,0.6)), 
-                        url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80');
-            background-size: cover;
-            background-position: center;
+            color: var(--azul-corporativo);
+            text-decoration: none;
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: white;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--rojo-vv);
+        }
+
+        /* Hero Section Moderna */
+        .hero {
+            position: relative;
+            padding: 120px 0 100px;
+            background: linear-gradient(135deg, #002e5b 0%, #001a33 100%);
+            color: var(--blanco);
             text-align: center;
-            padding: 0 20px;
         }
 
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 10px;
-            text-transform: uppercase;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('https://www.transparenttextures.com/patterns/cubes.png');
+            opacity: 0.1;
         }
 
-        .hero p {
-            font-size: 18px;
-            font-weight: 300;
-            max-width: 600px;
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
             margin: 0 auto;
         }
 
-        /* Sección Proyectos */
-        .container {
-            max-width: 1100px;
-            margin: 50px auto;
-            padding: 0 20px;
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 52px;
+            margin-bottom: 25px;
+            line-height: 1.1;
         }
 
-        .section-title {
-            text-align: center;
-            color: #002e5b;
+        .hero-content p {
+            font-size: 20px;
+            font-weight: 300;
+            opacity: 0.9;
             margin-bottom: 40px;
-            font-size: 28px;
-            text-transform: uppercase;
         }
 
-        .projects-grid {
+        .badge {
+            background: var(--rojo-vv);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        /* Secciones de Servicios */
+        .services {
+            padding: 100px 0;
+            background-color: var(--blanco);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            color: var(--azul-corporativo);
+        }
+
+        .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 25px;
         }
 
-        .project-card {
+        .service-card {
+            background: var(--gris-suave);
+            padding: 40px;
+            border-radius: 15px;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
             background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: 0.3s;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            border-color: var(--rojo-vv);
         }
 
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        .service-card h3 {
+            color: var(--azul-corporativo);
+            margin-bottom: 15px;
+            font-size: 22px;
         }
 
-        .project-img {
-            height: 200px;
-            background-size: cover;
-            background-position: center;
+        .service-card p {
+            color: #555;
+            font-size: 15px;
+            line-height: 1.7;
         }
 
-        .project-info {
-            padding: 20px;
-        }
-
-        .project-info h3 {
-            color: #002e5b;
-            margin-bottom: 10px;
-        }
-
-        .project-info p {
-            color: #666;
+        /* Footer */
+        footer {
+            background: #001226;
+            color: rgba(255,255,255,0.7);
+            padding: 60px 0;
+            text-align: center;
             font-size: 14px;
         }
 
-        /* Estilos para Mobile */
+        /* Responsive */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 32px; }
-            .brand { font-size: 24px; }
+            .hero-content h1 { font-size: 36px; }
+            .hero-content p { font-size: 16px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="brand">Grupo VyV</div>
-        <div class="gold-text">Construyendo Historias</div>
+        <div class="container">
+            <a href="#" class="logo">Grupo V<span>&</span>V</a>
+            <div style="font-size: 12px; font-weight: 700; color: var(--rojo-vv); letter-spacing: 1px;">SOLUCIONES DE PAGO</div>
+        </div>
     </header>
 
     <section class="hero">
-        <div>
-            <h1>Atención en Línea</h1>
-            <p>Estamos listos para asesorarte en tu próxima inversión inmobiliaria. Chatea con nosotros ahora.</p>
+        <div class="hero-content">
+            <div class="badge">Experiencia y Confianza desde 1992</div>
+            <h1>Recupere su Salud Financiera</h1>
+            <p>Especialistas en la gestión de cobranza y administración de carteras con un enfoque humano y profesional.</p>
+            <div style="display: flex; justify-content: center; gap: 20px;">
+                <div style="border-left: 2px solid var(--rojo-vv); padding-left: 15px; text-align: left;">
+                    <span style="display: block; font-weight: 700; font-size: 24px;">99%</span>
+                    <span style="font-size: 12px; opacity: 0.7;">Seguridad Jurídica</span>
+                </div>
+                <div style="border-left: 2px solid var(--rojo-vv); padding-left: 15px; text-align: left;">
+                    <span style="display: block; font-weight: 700; font-size: 24px;">100%</span>
+                    <span style="font-size: 12px; opacity: 0.7;">Soluciones a Medida</span>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="container">
-        <h2 class="section-title">Nuestros Proyectos</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1545324418-f1d3ac1ef300?auto=format&fit=crop&w=600&q=80');"></div>
-                <div class="project-info">
-                    <h3>Edificio El Parque</h3>
-                    <p>Exclusividad en San Isidro. Departamentos de lujo con acabados premium.</p>
-                </div>
+    <section class="services">
+        <div class="section-header">
+            <h2>Nuestras Soluciones</h2>
+            <p style="color: #888; margin-top: 10px;">Gestión integral para entidades financieras y personas naturales.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Gestión de Cobranzas</h3>
+                <p>Estrategias personalizadas para la recuperación activa de deuda bajo la metodología Ganar-Ganar.</p>
             </div>
-            <div class="project-card">
-                <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80');"></div>
-                <div class="project-info">
-                    <h3>Miraflores Views</h3>
-                    <p>La mejor vista al mar. Espacios diseñados para tu comodidad y estilo de vida.</p>
-                </div>
+            <div class="service-card">
+                <h3>Salud Financiera</h3>
+                <p>Asesoramos a personas para reinsertarse al sistema crediticio y mejorar su historial ante las centrales de riesgo.</p>
+            </div>
+            <div class="service-card">
+                <h3>Gestión de Carteras</h3>
+                <p>Administración eficiente de activos financieros con reportes en tiempo real y alta tasa de efectividad.</p>
             </div>
         </div>
     </section>
+
+    <footer>
+        <div class="container" style="flex-direction: column; gap: 20px;">
+            <p>&copy; 2026 Grupo V&V Soluciones SAC. Todos los derechos reservados.</p>
+            <p>Av. República de Panamá 3517, San Isidro, Lima - Perú</p>
+        </div>
+    </footer>
 
     <call-us-selector phonesystem-url="https://ucdemo.3cx.lat" party="LiveChat749341"></call-us-selector>
-
     <script defer src="https://downloads-global.3cx.com/downloads/livechatandtalk/v1/callus.js" id="tcx-callus-js" charset="utf-8"></script>
 
 </body>
